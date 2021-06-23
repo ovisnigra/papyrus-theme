@@ -1,54 +1,27 @@
 ---
 layout: post
-title: Sleeping Beauty
+title: Semblanza
 date: 2016-05-28 15:46
 comments: true
 external-url:
 categories: Mathematics
 ---
 
-> Sleeping Beauty undergoes an experiment where she's put to sleep on Sunday. Immediately after that, a fair coin is tossed. If it comes out Heads, Sleeping Beauty is waken on Monday. If it comes out Tails, she's waken both on Monday and Tuesday. After being waken, the experimentalist asks Sleeping Beauty: *"What is your degree of certainty that the coin landed heads?"*. He subsequently puts Sleeping Beauty to sleep, taking care to administer her an amnesia inducing drug that ensures she doesn't remember the experiment. Hence, everytime Sleeping Beauty is awaked, she won't know which day it is or whether she has already been awakened before or not. What should her answer be?
+> Semblanza, resumen o algo
 
-It's amazing how a simple puzzle installs chaos among mathematicians and philosophers alike. Some would argue that the correct probability is ½: after all, the coin is **fair**, isn't it? Others would say that the correct probability should be ⅓. Think about this problem for a second because the correct answer is... **both**!
+Texto **texto**, isn't it? Others would say that the correct probability should be ⅓. Think about this problem for a second because the correct answer is... **both**!
 
 As many things in life, it's all a matter of perspective. And the conundrum here lies in the way the problem is phrased. But before going into maths and probability theory, we shall **simulate**:
 
-```scala
-var correct = 0
-var questions = 0
-var heads = 0
-var trials = 10000
 
-// Let's run some trials
-(1 to trials).foreach { trial =>
-  // toss a fair coin
-  scala.util.Random.nextBoolean() match {
-    case true =>  // Heads was tossed. Wake on Monday.
-      // Sleeping Beauty always bet Heads was tossed;
-      // ... in this case, only once.
-      questions += 1
-      correct += 1
-      heads += 1
-    case _ =>     // Tails was tossed. Wake on Monday and Tuesday.
-      // Sleeping Beauty always bet Heads was tossed;
-      // ... in this case, it will bet both on Monday
-      // and Tuesday. But it will fail!
-      questions += 2
-  }
-}
-
-println("Probability of SB being correct: " + correct.toDouble/questions)
-println("Probability of Heads being tossed: " + heads.toDouble/trials)
-```
-
-Here's a sample run:
+Muestra de código:
 
 ```
 Probability of SB being correct: 0.33636242148870776
 Probability of Heads being tossed: 0.5034
 ```
 
-## Two questions, two answers
+## Subtítulo
 
 The attentive reader should have already grasped that the answer depends on *what exactly we are counting as a success*. If we measure success as the *number of times Sleeping Beauty is able to give a correct answer*, then her *degree* of confidence should be ⅓, as the above simulation shows. If you are still unable to see how, under that measurement of success, the number of times Sleeping Beauty is awakened impacts the answer, then imagine the following puzzle variant:
 
